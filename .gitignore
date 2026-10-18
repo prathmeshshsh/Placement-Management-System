@@ -1,22 +1,20 @@
-# Environment secrets
+
+# Environment files and secrets
 .env
 .env.*
 !.env.example
-**/.env
-**/.env.*
-**/!.env.example
 
-# Frontend dependencies and builds
+# Frontend dependencies and build output
 **/node_modules/
 **/dist/
 
-# Python
-**/__pycache__/
-*.py[cod]
+# Python virtual environments and cache
 **/.venv/
 **/venv/
+**/__pycache__/
+*.py[cod]
 
-# IDE and OS
+# Local configuration
 .vscode/
 .DS_Store
 Thumbs.db
