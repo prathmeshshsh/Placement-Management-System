@@ -1,0 +1,7 @@
+import api from "./api";
+const mapCompany = (c) => ({ id: c.id, name: c.display_name || c.legal_name, legalName: c.legal_name, sector: c.industry || "Other", website: c.website || "", status: c.status === "ACTIVE" ? "Active" : c.status, package: c.package_lpa ?? 0, eligibility: c.eligibility_cgpa ?? "", positions: c.positions ?? 0, industry: c.industry || "", recruiterEmail: c.recruiter_email || "" });
+const payload = (company) => ({ legal_name: company.legalName || company.name, display_name: company.name || company.display_name, industry: company.sector || company.industry || null, website: company.website || null, package_lpa: company.package === "" ? null : Number(company.package), eligibility_cgpa: company.eligibility === "" ? null : Number(company.eligibility), positions: company.positions === "" ? null : Number(company.positions), status: company.status === "Closed" || company.status === "Inactive" ? "INACTIVE" : "ACTIVE" });
+export const getCompanies = async () => (await api.get("/companies")).data.map(mapCompany);
+export const createCompany = async (company) => mapCompany((await api.post("/companies", { ...payload(company), recruiter_name: company.recruiterName, recruiter_email: company.recruiterEmail, recruiter_password: company.recruiterPassword })).data);
+export const updateCompany = async (id, company) => mapCompany((await api.patch(`/companies/${id}`, payload(company))).data);
+export const deleteCompanyApi = async (id) => { await api.delete(`/companies/${id}`); return true; };

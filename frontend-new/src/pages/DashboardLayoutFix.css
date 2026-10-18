@@ -1,0 +1,136 @@
+/* Scoped dashboard layout repair. Does not change global styles or other pages. */
+.dashboard-layout-fix {
+  display: flex !important;
+  align-items: stretch;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.dashboard-layout-fix > .dashboard-content {
+  flex: 1 1 0 !important;
+  width: auto !important;
+  max-width: 1600px;
+  min-width: 0 !important;
+  margin: 0 auto !important;
+  padding: clamp(24px, 3vw, 48px) !important;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  box-sizing: border-box !important;
+  overflow-x: hidden;
+}
+
+.dashboard-layout-fix .dashboard-header {
+  display: flex !important;
+  align-items: flex-end !important;
+  justify-content: space-between !important;
+  gap: 20px !important;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 0 !important;
+  padding: 0 0 18px !important;
+  box-sizing: border-box;
+}
+.dashboard-layout-fix .dashboard-header > div { flex: 1 1 320px; min-width: 0; }
+.dashboard-layout-fix .dashboard-header h1 { margin: 0 !important; line-height: 1.08 !important; }
+.dashboard-layout-fix .dashboard-header p { margin: 8px 0 0 !important; line-height: 1.5; }
+.dashboard-layout-fix .dashboard-search {
+  flex: 0 1 340px !important;
+  width: min(100%, 340px) !important;
+  min-width: min(240px, 100%);
+  height: 48px !important;
+  padding: 0 16px !important;
+  box-sizing: border-box !important;
+}
+
+.dashboard-layout-fix .glass-panel {
+  width: 100%;
+  min-width: 0;
+  margin: 0 !important;
+  padding: clamp(22px, 2.2vw, 34px) !important;
+  border-radius: 16px !important;
+  box-sizing: border-box !important;
+}
+.dashboard-layout-fix .dashboard-stats,
+.dashboard-layout-fix .kpi-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  align-items: stretch !important;
+  gap: 16px !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  box-sizing: border-box;
+}
+.dashboard-layout-fix .dashboard-card,
+.dashboard-layout-fix .kpi-card {
+  width: 100% !important;
+  min-width: 0 !important;
+  min-height: 150px;
+  height: 100%;
+  margin: 0 !important;
+  padding: 24px !important;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 14px;
+  box-sizing: border-box !important;
+  border-radius: 15px !important;
+}
+.dashboard-layout-fix .dashboard-card h3,
+.dashboard-layout-fix .kpi-card h4 {
+  margin: 0 !important;
+  font-size: clamp(14px, 1.1vw, 17px) !important;
+  line-height: 1.4 !important;
+}
+.dashboard-layout-fix .dashboard-card > span,
+.dashboard-layout-fix .kpi-card > span {
+  display: block;
+  margin-top: auto;
+  font-size: clamp(25px, 2vw, 34px) !important;
+  line-height: 1.15 !important;
+  overflow-wrap: anywhere;
+}
+.dashboard-layout-fix .dashboard-grid,
+.dashboard-layout-fix .dashboard-bottom {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  align-items: stretch;
+  gap: 20px !important;
+  width: 100% !important;
+  min-width: 0;
+  margin: 0 !important;
+}
+.dashboard-layout-fix .dashboard-grid > *,
+.dashboard-layout-fix .dashboard-bottom > * { min-width: 0; height: 100%; }
+.dashboard-layout-fix .recharts-responsive-container { min-width: 0; }
+.dashboard-layout-fix .dashboard-action {
+  min-height: 48px !important;
+  padding: 0 20px !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+@media (max-width: 1100px) {
+  .dashboard-layout-fix > .dashboard-content { padding: 28px !important; }
+  .dashboard-layout-fix .dashboard-stats,
+  .dashboard-layout-fix .kpi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+}
+@media (max-width: 720px) {
+  .dashboard-layout-fix > .dashboard-content { padding: 20px 16px !important; gap: 18px; }
+  .dashboard-layout-fix .dashboard-header { align-items: stretch !important; }
+  .dashboard-layout-fix .dashboard-header h1 { font-size: clamp(32px, 8vw, 48px) !important; }
+  .dashboard-layout-fix .dashboard-search { flex: 1 1 100% !important; width: 100% !important; }
+  .dashboard-layout-fix .dashboard-stats,
+  .dashboard-layout-fix .kpi-grid,
+  .dashboard-layout-fix .dashboard-grid,
+  .dashboard-layout-fix .dashboard-bottom { grid-template-columns: minmax(0, 1fr) !important; gap: 14px !important; }
+  .dashboard-layout-fix .dashboard-card,
+  .dashboard-layout-fix .kpi-card { min-height: 128px; padding: 22px !important; }
+  .dashboard-layout-fix .glass-panel { padding: 22px !important; }
+}

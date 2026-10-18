@@ -1,0 +1,22 @@
+# Environment secrets
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+**/!.env.example
+
+# Frontend dependencies and builds
+**/node_modules/
+**/dist/
+
+# Python
+**/__pycache__/
+*.py[cod]
+**/.venv/
+**/venv/
+
+# IDE and OS
+.vscode/
+.DS_Store
+Thumbs.db
